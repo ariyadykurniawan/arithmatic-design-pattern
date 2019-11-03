@@ -1,6 +1,7 @@
 package prime;
 
 import ArithmaticHelper.Command;
+import ArithmaticHelper.Constants;
 
 public class PrimeCommand implements Command {
     private PrimeGenerator primeGenerator = new PrimeGenerator();
@@ -11,7 +12,10 @@ public class PrimeCommand implements Command {
     }
 
     @Override
-    public Object execute() {
+    public Object execute() throws Exception{
+        if(limit == 0){
+            throw new Exception(Constants.INVALID_LIMIT);
+        }
         return primeGenerator.generate(limit);
     }
 }

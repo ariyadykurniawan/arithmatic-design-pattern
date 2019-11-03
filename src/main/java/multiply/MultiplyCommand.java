@@ -1,9 +1,6 @@
 package multiply;
 
-import ArithmaticHelper.Arithmatic;
-import ArithmaticHelper.ArithmeticImpl;
-import ArithmaticHelper.Command;
-import ArithmaticHelper.Input;
+import ArithmaticHelper.*;
 
 public class MultiplyCommand implements Command {
     private Arithmatic arithmatic = new ArithmeticImpl();
@@ -14,7 +11,10 @@ public class MultiplyCommand implements Command {
     }
 
     @Override
-    public Integer execute() {
+    public Integer execute() throws Exception{
+        if(input.getX() == null|| input.getY() == null){
+            throw new Exception(Constants.INVALID_INPUT);
+        }
         return arithmatic.multiplyNumber(input.getX(), input.getY());
     }
 }
